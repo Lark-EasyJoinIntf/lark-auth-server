@@ -162,54 +162,14 @@ class UserConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated();
 	}
 
-//	/**
-//	 * 重写该方法，添加自定义用户
-//	 * */
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//
-//		JdbcUserDetailsManagerConfigurer<AuthenticationManagerBuilder>  jdbc=auth.jdbcAuthentication();
-//
-//
-//		InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> manager= auth.inMemoryAuthentication();
-//
-//
-//		new User("admin","admin",LettuceSets.newHashSet(new SimpleGrantedAuthority("ADMIN")));
-//
-//		manager.withUser("admin").password("admin").roles("ADMIN","USER")
-//				.and()
-//				.withUser("terry").password("terry").roles("USER")
-//				.and()
-//				.withUser("larry").password("larry").roles("USER");
-//	}
-
 	@Autowired
 	private SecurityProvider securityProvider;
-
-//	@Autowired
-//	private MyUserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//自定义AuthenticationProvider
 		auth.authenticationProvider(securityProvider);
 	}
-
-//	@Override
-//	protected UserDetailsService userDetailsService() {
-//		return userDetailsService;
-//	}
-
-	//	@Bean
-//	@Override
-//	public UserDetailsService userDetailsService() {
-//		return new InMemoryUserDetailsManager(
-//				User.withDefaultPasswordEncoder()
-//					.username("subject")
-//					.password("password")
-//					.roles("USER")
-//					.build());
-//	}
 
 }
 
