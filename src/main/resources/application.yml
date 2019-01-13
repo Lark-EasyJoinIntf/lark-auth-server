@@ -1,0 +1,15 @@
+
+server:
+  port: 8082
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    active: dev
+  application:
+    name: auth-server
+
+  redis:
+        url: redis://127.0.0.1:6379
+        database: 1
